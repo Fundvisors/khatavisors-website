@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KhataVisors — आपका मुनीम | GST billing, POS &amp; inventory for every counter</title>
-<meta name="description" content="KhataVisors is GST billing, POS and inventory software for shops, restaurants, pharmacies, wholesalers and amusement parks. Free for one user. Bluetooth printing, bills on WhatsApp, e-invoice and e-way bill.">
+<title>KhataVisors — आपका मुनीम | Free GST billing, POS & inventory software</title>
+<meta name="description" content="KhataVisors is GST billing, POS and inventory software for shops, restaurants, pharmacies, wholesalers, salons and amusement parks. Free for one user. Bluetooth printing, bills on WhatsApp, e-invoice and e-way bill.">
 <meta name="theme-color" content="#C4141C">
-<meta property="og:title" content="KhataVisors — आपका मुनीम">
-<meta property="og:description" content="Every counter. Every bill, in seconds. GST billing, POS and inventory — free for one user.">
+<link rel="canonical" href="https://khatavisors.com/">
+<meta property="og:title" content="KhataVisors — आपका मुनीम | Free GST billing, POS & inventory software">
+<meta property="og:description" content="KhataVisors is GST billing, POS and inventory software for shops, restaurants, pharmacies, wholesalers, salons and amusement parks. Free for one user. Bluetooth printing, bills on WhatsApp, e-invoice and e-way bill.">
 <meta property="og:image" content="https://khatavisors.com/assets/app/dashboard.jpg">
 <meta property="og:url" content="https://khatavisors.com/">
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -17,274 +18,50 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
-<style>
-  @font-face{font-family:"Bebas Neue";src:url("assets/fonts/BebasNeue-Regular.woff") format("woff");font-weight:400;font-display:swap}
-  @font-face{font-family:"Plus Jakarta Sans";src:url("assets/fonts/PlusJakartaSans-var.woff") format("woff");font-weight:200 800;font-display:swap}
-
-  :root{
-    --red:#C4141C;          /* bahi-khata cloth red: hero, primary buttons */
-    --red-bright:#E11D2E;   /* app button red */
-    --red-deep:#8E0C12;
-    --ink:#1C1C1F;
-    --muted:#5E5E66;
-    --rule:#E7E2DA;         /* ledger rule */
-    --paper:#FBFAF7;        /* ledger page */
-    --haldi:#FFCF4D;        /* turmeric yellow: Hindi lines on red, "free" */
-    --green:#15803D;
-    --wa:#25D366;
-    --display:"Bebas Neue",Impact,"Arial Narrow",sans-serif;
-    --body:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif;
-    --deva:"Noto Sans Devanagari","Plus Jakarta Sans",sans-serif;
-    --receipt:ui-monospace,"Cascadia Mono","Consolas","Courier New",monospace;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{margin:0;background:#fff;color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  img{max-width:100%;display:block}
-  a{color:inherit}
-  :focus-visible{outline:3px solid var(--haldi);outline-offset:3px;border-radius:6px}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-  .deva{font-family:var(--deva)}
-  h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.01em;line-height:1.15}
-  h2{font-size:clamp(1.75rem,3.4vw,2.5rem)}
-  p{margin:0}
-  .lead{color:var(--muted);font-size:1.08rem;max-width:60ch}
-
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:700;font-size:1rem;
-    padding:15px 26px;border-radius:12px;border:2px solid transparent;transition:transform .12s ease,background .12s ease;cursor:pointer;font-family:inherit}
-  .btn:hover{transform:translateY(-1px)}
-  .btn-red{background:var(--red-bright);color:#fff;box-shadow:0 10px 24px -10px rgba(225,29,46,.7)}
-  .btn-red:hover{background:var(--red-deep)}
-  .btn-white{background:#fff;color:var(--red-deep)}
-  .btn-line{border-color:rgba(255,255,255,.7);color:#fff}
-  .btn-line:hover{background:rgba(255,255,255,.1)}
-  .btn-ink{background:var(--ink);color:#fff}
-  .btn-wa{background:var(--wa);color:#0b3d1f}
-
-  /* ---------- nav ---------- */
-  .nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--rule)}
-  .nav-in{max-width:1180px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:28px}
-  .nav-logo img{height:54px;width:auto}
-  .nav-links{display:flex;gap:26px;margin-left:auto;font-weight:600;font-size:.95rem;color:var(--muted)}
-  .nav-links a{text-decoration:none}
-  .nav-links a:hover{color:var(--red)}
-  .nav-actions{display:flex;gap:12px;align-items:center}
-  .nav-signin{font-weight:700;font-size:.95rem;text-decoration:none;padding:10px 6px}
-  .nav .btn{padding:11px 18px;font-size:.92rem}
-  @media (max-width:940px){.nav-links{display:none}.nav-actions{margin-left:auto}}
-  @media (max-width:520px){.nav-logo img{height:42px}.nav-signin{display:none}.nav .btn{padding:10px 14px}}
-
-  /* ---------- hero: the bahi-khata cover ---------- */
-  .hero{position:relative;background:var(--red);color:#fff;overflow:hidden;
-    background-image:
-      repeating-linear-gradient(0deg,rgba(0,0,0,.035) 0 2px,transparent 2px 4px),
-      repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 2px,transparent 2px 5px),
-      radial-gradient(900px 600px at 85% 20%,#D7262E 0%,transparent 60%);}
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:14px;
-    background:repeating-linear-gradient(90deg,var(--haldi) 0 18px,transparent 18px 28px);opacity:.9}
-  .hero-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center;padding:72px 24px 96px;max-width:1180px;margin:0 auto}
-  .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(3.2rem,6vw,5.6rem);line-height:.9;letter-spacing:.005em;text-transform:uppercase}
-  .hero h1 .ln{display:block;white-space:nowrap}
-  .hero .hindi{font-family:var(--deva);color:var(--haldi);font-size:clamp(1.25rem,2.2vw,1.6rem);font-weight:700;margin-top:18px}
-  .hero .lead{color:rgba(255,255,255,.88);margin-top:18px;font-size:1.1rem;max-width:48ch}
-  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-  .hero-facts{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0;padding:0;list-style:none}
-  .hero-facts li{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:7px 14px;font-size:.88rem;font-weight:600}
-
-  .stage{position:relative;padding-bottom:40px}
-  .browser{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(40,0,0,.65),0 0 0 1px rgba(0,0,0,.08)}
-  .browser-bar{height:34px;background:#F3F3F1;display:flex;align-items:center;gap:7px;padding:0 12px;border-bottom:1px solid #e6e6e2}
-  .browser-bar i{width:10px;height:10px;border-radius:50%;background:#D9D9D4}
-  .browser-bar span{margin-left:10px;font-size:.75rem;color:#77777e;background:#fff;border:1px solid #e6e6e2;border-radius:6px;padding:2px 10px}
-  .browser img{width:100%;height:auto}
-
-  /* the printer + receipt: the one animated moment */
-  .printer{position:absolute;left:-40px;bottom:-6px;width:250px;z-index:3}
-  .printer-head{position:relative;z-index:2;height:38px;border-radius:12px 12px 6px 6px;background:linear-gradient(#2a2a2e,#151517);
-    box-shadow:0 14px 28px -12px rgba(0,0,0,.6)}
-  .printer-head::before{content:"";position:absolute;left:18px;right:18px;bottom:8px;height:5px;border-radius:3px;background:#000}
-  .printer-head::after{content:"";position:absolute;right:14px;top:10px;width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 8px #3ddc84}
-  .receipt-clip{position:absolute;left:24px;right:24px;top:30px;overflow:hidden;height:330px;pointer-events:none}
-  .receipt{background:var(--paper);color:#222;font-family:var(--receipt);font-size:11.5px;line-height:1.45;padding:14px 14px 18px;
-    box-shadow:0 18px 30px -16px rgba(0,0,0,.55);transform:translateY(0);
-    -webkit-mask:linear-gradient(#000 calc(100% - 8px),transparent 0),conic-gradient(from -45deg at bottom,#000 90deg,transparent 0) bottom/12px 8px repeat-x;
-            mask:linear-gradient(#000 calc(100% - 8px),transparent 0),conic-gradient(from -45deg at bottom,#000 90deg,transparent 0) bottom/12px 8px repeat-x}
-  .receipt .c{text-align:center}
-  .receipt b{font-weight:700}
-  .receipt hr{border:0;border-top:1px dashed #9a9a9a;margin:7px 0}
-  .receipt .row{display:flex;justify-content:space-between;gap:8px}
-  .receipt .tot{font-size:13.5px;font-weight:700}
-  .receipt .wa{color:#128C4A;font-weight:700}
-  @media (prefers-reduced-motion:no-preference){
-    .receipt{animation:print 2.4s steps(24,end) .5s both}
-    @keyframes print{from{transform:translateY(-100%)}to{transform:translateY(0)}}
-  }
-  @media (max-width:940px){
-    .hero-in{grid-template-columns:1fr;padding:48px 24px 80px;gap:40px}
-    .stage{padding:0}
-    .printer{position:relative;left:auto;bottom:auto;margin:-16px auto 0;height:330px}
-    .receipt-clip{height:300px}
-  }
-
-  /* ---------- sections ---------- */
-  .sec{padding:96px 0}
-  .sec-head{max-width:720px;margin-bottom:44px}
-  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
-  .sec-head .lead{margin-top:14px}
-  .sec-head.center .lead{margin-left:auto;margin-right:auto}
-  .sec-head .hi{font-family:var(--deva);color:var(--red);font-weight:700;margin-top:8px;font-size:1.1rem}
-  @media (max-width:640px){.sec{padding:68px 0}}
-
-  /* ---------- industries: a ledger page ---------- */
-  .ledger-wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:56px;align-items:start}
-  .ledger{background:var(--paper);border:1px solid var(--rule);border-radius:6px 16px 16px 6px;box-shadow:0 30px 60px -40px rgba(60,20,0,.45);
-    position:relative;padding:8px 0 8px 0;
-    background-image:linear-gradient(90deg,transparent 64px,#E9A3A3 64px,#E9A3A3 66px,transparent 66px)}
-  .ledger-row{display:grid;grid-template-columns:66px minmax(0,1fr);align-items:center;border-bottom:1px solid #D9E3EE;min-height:74px}
-  .ledger-row:last-child{border-bottom:0}
-  .ledger-row .ic{font-size:1.6rem;text-align:center}
-  .ledger-row div{padding:12px 22px}
-  .ledger-row b{display:block;font-size:1.05rem}
-  .ledger-row span{color:var(--muted);font-size:.95rem;line-height:1.45;display:block}
-  .owns{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:12px}
-  .owns li{display:flex;gap:12px;align-items:flex-start;font-weight:600}
-  .owns li::before{content:"";flex:0 0 22px;height:22px;margin-top:2px;border-radius:6px;background:var(--red-bright) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/15px no-repeat}
-  @media (max-width:940px){.ledger-wrap{grid-template-columns:1fr;gap:36px}}
-
-  /* ---------- tour: feature tabs with real screens ---------- */
-  .tour{background:#F6F4F0}
-  .tab-note{display:none;color:var(--muted);font-size:.98rem;margin:14px 2px 0}
-  .tour-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.5fr);gap:40px;align-items:start}
-  .tabs{display:flex;flex-direction:column;gap:6px}
-  .tab{all:unset;box-sizing:border-box;cursor:pointer;border-radius:14px;padding:16px 18px;border:1.5px solid transparent;display:block}
-  .tab b{display:block;font-size:1.05rem}
-  .tab span{display:none;color:var(--muted);font-size:.95rem;line-height:1.5;margin-top:6px}
-  .tab:hover{background:#fff}
-  .tab[aria-selected="true"]{background:#fff;border-color:var(--red-bright);box-shadow:0 14px 30px -22px rgba(196,20,28,.6)}
-  .tab[aria-selected="true"] span{display:block}
-  .tab:focus-visible{outline:3px solid var(--red-bright)}
-  .screen{position:sticky;top:96px}
-  .screen .browser{box-shadow:0 40px 70px -40px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.08)}
-  .screen figcaption{color:var(--muted);font-size:.85rem;margin-top:12px}
-  @media (max-width:940px){
-    .tour-grid{grid-template-columns:1fr}
-    .tabs{flex-direction:row;overflow-x:auto;gap:8px;padding-bottom:6px;scrollbar-width:thin}
-    .tab{flex:0 0 auto;padding:10px 16px;border-radius:999px;background:#fff;border-color:var(--rule)}
-    .tab span{display:none!important}
-    .screen{position:static}
-    .tab-note{display:block}
-  }
-
-  /* ---------- everything included ---------- */
-  .all{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px 30px;margin:0;padding:0;list-style:none}
-  .all li{border-top:2px solid var(--ink);padding-top:14px}
-  .all b{display:block;font-size:1.02rem}
-  .all span{display:block;color:var(--muted);font-size:.93rem;line-height:1.5;margin-top:4px}
-  @media (max-width:940px){.all{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media (max-width:520px){.all{grid-template-columns:1fr}}
-
-  /* ---------- pricing ---------- */
-  .pricing{background:var(--paper);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-  .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
-  .plan{background:#fff;border:1.5px solid var(--rule);border-radius:20px;padding:30px 26px 26px;display:flex;flex-direction:column}
-  .plan h3{font-size:1.3rem}
-  .plan .who{color:var(--muted);font-size:.95rem;margin-top:4px;min-height:3em}
-  .price{display:flex;align-items:baseline;gap:8px;margin:20px 0 4px;min-height:64px}
-  .price .amt{font-family:var(--display);font-size:3.6rem;line-height:1;letter-spacing:.01em}
-  .price .per{color:var(--muted);font-weight:600}
-  .price-note{font-size:.88rem;color:var(--muted);min-height:1.5em}
-  .plan ul{list-style:none;margin:22px 0 26px;padding:0;flex:1}
-  .plan li{display:flex;gap:10px;padding:9px 0;border-top:1px solid #F0ECE6;font-size:.95rem;line-height:1.45}
-  .plan li:first-child{border-top:0}
-  .plan li::before{content:"✓";color:var(--green);font-weight:800;flex:0 0 auto}
-  .plan li.no{color:#8C8C93}
-  .plan li.no::before{content:"–";color:#B0B0B6}
-  .plan li em{font-style:normal;font-weight:700}
-  .plan .btn{width:100%}
-  .plan.free .amt{color:var(--green)}
-  .plan.pro{background:var(--ink);color:#fff;border-color:var(--ink);position:relative;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)}
-  .plan.pro .who,.plan.pro .per,.plan.pro .price-note{color:rgba(255,255,255,.7)}
-  .plan.pro li{border-color:rgba(255,255,255,.12)}
-  .plan.pro li::before{color:#5EE08A}
-  .plan .flag{position:absolute;top:-14px;right:22px;background:var(--haldi);color:#3b2a00;font-weight:800;font-size:.8rem;padding:5px 12px;border-radius:999px}
-  .bill{display:inline-flex;background:rgba(255,255,255,.1);border-radius:999px;padding:4px;margin-top:16px;align-self:flex-start}
-  .bill button{all:unset;cursor:pointer;padding:7px 14px;border-radius:999px;font-weight:700;font-size:.85rem;color:rgba(255,255,255,.75)}
-  .bill button[aria-pressed="true"]{background:#fff;color:var(--ink)}
-  .bill button:focus-visible{outline:2px solid var(--haldi)}
-  .save{color:var(--haldi);font-weight:700}
-  .plan.custom{border-style:dashed;border-color:#D8CFC2}
-  .price-foot{text-align:center;color:var(--muted);font-size:.92rem;margin-top:26px}
-  @media (max-width:980px){.plans{grid-template-columns:1fr;max-width:480px;margin:0 auto}.plan .who{min-height:0}.price{min-height:0}}
-
-  /* ---------- faq ---------- */
-  .faq{max-width:800px;margin:0 auto}
-  .faq details{border-bottom:1px solid var(--rule)}
-  .faq summary{cursor:pointer;list-style:none;padding:22px 40px 22px 2px;font-weight:700;font-size:1.05rem;position:relative}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary::after{content:"+";position:absolute;right:6px;top:16px;font-size:1.7rem;font-weight:400;color:var(--red-bright)}
-  .faq details[open] summary::after{content:"–"}
-  .faq details p{color:var(--muted);padding:0 2px 22px;max-width:68ch}
-
-  /* ---------- contact band ---------- */
-  .band{background:var(--red);color:#fff;border-radius:24px;padding:56px 48px;display:grid;grid-template-columns:minmax(0,1.2fr) auto;gap:30px;align-items:center;position:relative;overflow:hidden}
-  .band h2{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,5vw,4rem);line-height:.95;text-transform:uppercase}
-  .band p{color:rgba(255,255,255,.88);margin-top:12px;max-width:52ch}
-  .band .acts{display:flex;flex-direction:column;gap:12px}
-  @media (max-width:820px){.band{grid-template-columns:1fr;padding:40px 26px}}
-
-  /* ---------- footer ---------- */
-  footer{background:#F6F4F0;border-top:1px solid var(--rule);padding:56px 0 30px;color:var(--muted);font-size:.94rem}
-  .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:30px}
-  .foot img{height:56px;width:auto;margin-bottom:14px}
-  .foot h4{color:var(--ink);margin:0 0 12px;font-size:.98rem}
-  .foot a{display:block;text-decoration:none;margin-bottom:8px}
-  .foot a:hover{color:var(--red)}
-  .foot-bottom{border-top:1px solid var(--rule);margin-top:40px;padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.86rem}
-  .foot-bottom b{color:var(--ink)}
-  @media (max-width:820px){.foot{grid-template-columns:1fr 1fr}}
-  @media (max-width:520px){.foot{grid-template-columns:1fr}}
-
-  /* ---------- floating WhatsApp ---------- */
-  .wa-float{position:fixed;right:20px;bottom:20px;z-index:80;width:58px;height:58px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;
-    box-shadow:0 12px 26px -8px rgba(37,211,102,.7)}
-  .wa-float svg{width:30px;height:30px}
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-
+<div class="strip">
+  <div class="wrap">
+    <div><svg style="width:16px;height:16px;vertical-align:-3px;color:#FFCF4D" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9"/><path d="M12 8v13"/><path d="M12 8c-1.5-3-5-3.5-5-1.5S10 8 12 8zM12 8c1.5-3 5-3.5 5-1.5S14 8 12 8z"/></svg> <b>Festive offer:</b> 20% off the Enterprise plan, valid till 30 November 2026. <a class="link" style="color:#FFCF4D" href="pricing.html">See plans</a></div>
+    <div class="contact"><a href="tel:+919953879916">+91 99538 79916</a><a href="mailto:support@fundvisors.com">support@fundvisors.com</a></div>
+  </div>
+</div>
 <nav class="nav" aria-label="Main">
   <div class="nav-in">
-    <a class="nav-logo" href="#top" aria-label="KhataVisors home"><img src="khatavisors-logo.png" alt="KhataVisors — आपका मुनीम" width="900" height="253"></a>
-    <div class="nav-links">
-      <a href="#industries">Industries</a>
-      <a href="#features">Features</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
+    <a class="nav-logo" href="index.html" aria-label="KhataVisors home"><img src="khatavisors-logo.png" alt="KhataVisors — आपका मुनीम" width="900" height="253"></a>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="partner.html">Partner</a>
+      <a href="support.html">Support</a>
     </div>
     <div class="nav-actions">
       <a class="nav-signin" href="https://billing.khatavisors.com/login/">Sign in</a>
       <a class="btn btn-red" href="https://billing.khatavisors.com/get-khatavisors/">Start free</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
 </nav>
 
-<header class="hero" id="top">
+<main>
+<header class="hero">
   <div class="hero-in">
     <div>
-      <h1><span class="ln">Every counter.</span> <span class="ln">Every bill,</span> <span class="ln">in seconds.</span></h1>
+      <h1 class="display"><span class="ln">Free GST billing</span> <span class="ln">for every counter</span></h1>
       <p class="hindi">आपका मुनीम — अब हर काउंटर पर</p>
-      <p class="lead">GST billing, POS and stock for shops, restaurants, pharmacies, wholesalers and amusement parks. Print on your Bluetooth printer, send the bill on WhatsApp, and see today's sales at a glance.</p>
+      <p class="lead">Bill in seconds, print on your Bluetooth printer and send the bill on WhatsApp. Stock, khata, e-invoice and GST returns in one app, set up for your kind of business.</p>
       <div class="hero-ctas">
         <a class="btn btn-white" href="https://billing.khatavisors.com/get-khatavisors/">Start free</a>
-        <a class="btn btn-line" href="#features">See the app</a>
+        <a class="btn btn-line" href="https://billing.khatavisors.com/get-khatavisors/">Book a free demo</a>
       </div>
-      <ul class="hero-facts" aria-label="Highlights">
-        <li>Free for 1 user</li>
-        <li>Bluetooth &amp; thermal printing</li>
-        <li>e-Invoice &amp; e-way bill</li>
+      <ul class="badges" aria-label="Highlights">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Free for 1 user, 100 bills a month</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 15l2 2 4-4"/></svg> e-Invoice &amp; e-way bill ready</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6"/><rect x="17" y="8" width="5" height="12" rx="1"/></svg> PC, Android phone and tablet</li>
       </ul>
     </div>
-
     <div class="stage" aria-hidden="true">
       <div class="browser">
         <div class="browser-bar"><i></i><i></i><i></i><span>billing.khatavisors.com</span></div>
@@ -293,8 +70,8 @@
       <div class="printer">
         <div class="printer-head"></div>
         <div class="receipt-clip">
-          <div class="receipt">
-            <div class="c"><b>SHARMA KIRANA STORE</b><br>Bill 1042 &nbsp; 02-11-2026</div>
+          <div class="receipt animate">
+            <div class="c"><b>SHARMA KIRANA STORE</b><br>Bill 1042 &nbsp; 05-11-2026</div>
             <hr>
             <div class="row"><span>Atta 5 kg</span><span>245.00</span></div>
             <div class="row"><span>Toor dal 1 kg</span><span>160.00</span></div>
@@ -313,195 +90,168 @@
   </div>
 </header>
 
-<main>
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="sec-head center">
+      <h2>Everything your counter needs</h2>
+      <p class="lead">Real screens from KhataVisors. Sample business shown.</p>
+    </div>
+    <div class="fgrid">
+      <article class="fcard"><div class="shot"><img src="assets/app/wholesale.jpg" alt="New bill screen with buyer and items" loading="lazy" width="1366" height="589" style="width:180.0%;margin-left:-71.2%;margin-top:-11.9%"></div>
+        <div class="body"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg> Bill in seconds</h3><p>Search or scan a barcode, use the customer's last rates and take cash, UPI, card, split or credit.</p></div></article>
+      <article class="fcard"><div class="shot"><img src="assets/app/invoice.jpg" alt="Saved bill with PDF, print and WhatsApp buttons" loading="lazy" width="1366" height="589" style="width:175.0%;margin-left:-42.3%;margin-top:-9.0%"></div>
+        <div class="body"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg> Print, PDF or WhatsApp</h3><p>Bills print as you save. Send the PDF or an A4 GST invoice straight to the customer's WhatsApp.</p></div></article>
+      <article class="fcard"><div class="shot"><img src="assets/app/invoice.jpg" alt="e-Invoice and e-way bill buttons on a bill" loading="lazy" width="1366" height="589" style="width:190.0%;margin-left:-34.8%;margin-top:-23.6%"></div>
+        <div class="body"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M9 15l2 2 4-4"/></svg> e-Invoice &amp; e-way bill</h3><p>Make the IRN e-invoice and e-way bill from the bill in one click, or automatically for every B2B bill.</p></div></article>
+      <article class="fcard"><div class="shot"><img src="assets/app/stock.jpg" alt="Scan a supplier bill with a photo" loading="lazy" width="1366" height="589" style="width:250.0%;margin-left:-49.4%;margin-top:-31.1%"></div>
+        <div class="body"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg> Snap purchase bills</h3><p>Take a photo of a supplier's bill. Items, rates and GST are filled in, and stock goes up when you confirm.</p></div></article>
+      <article class="fcard"><div class="shot"><img src="assets/app/gst.jpg" alt="GST filing screen with GSTR-1 files" loading="lazy" width="1366" height="589" style="width:170.0%;margin-left:-31.1%;margin-top:-10.6%"></div>
+        <div class="body"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 21h18"/></svg> GST returns, ready to file</h3><p>GSTR-1 files in the Offline Tool format, GSTR-3B figures and GSTR-2B purchase import.</p></div></article>
+      <article class="fcard"><div class="shot"><img src="assets/app/dashboard.jpg" alt="Dashboard with sales and stock alerts" loading="lazy" width="1366" height="589" style="width:160.0%;margin-left:-29.3%;margin-top:-9.4%"></div>
+        <div class="body"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg> Today's sales at a glance</h3><p>Sales, average bill, payment modes, top items and stock to reorder, for any date range.</p></div></article>
+    </div>
+    <div class="sec-foot"><a class="btn btn-outline" href="features.html">See all features</a></div>
+  </div>
+</section>
 
-<section class="sec" id="industries">
+<section class="sec paper" id="industries">
   <div class="wrap ledger-wrap">
-    <div class="sec-head">
+    <div class="sec-head" style="margin-bottom:0">
       <h2>Set up for the way your business works</h2>
       <p class="hi">हर बिज़नेस का अपना डैशबोर्ड, अपना बिल</p>
-      <p class="lead">KhataVisors isn't one screen forced on every shop. Pick your industry and you get a dashboard, billing screen and invoice made for it, plus the features only your trade needs.</p>
-      <ul class="owns">
-        <li>Its own dashboard, with the numbers your trade watches</li>
-        <li>Its own billing screen, laid out for your counter</li>
+      <p class="lead">Pick your industry and KhataVisors gives you a dashboard, billing screen and invoice made for it, plus the features only your trade needs.</p>
+      <ul class="ticks">
+        <li>Its own dashboard</li>
+        <li>Its own billing screen</li>
         <li>Its own invoice template, thermal or A4</li>
         <li>Features made for your industry</li>
       </ul>
     </div>
     <div class="ledger" role="list">
-      <div class="ledger-row" role="listitem"><span class="ic">🛒</span><div><b>Retail &amp; kirana</b><span>Barcode billing, loose items by kg or litre, labour charges and customer credit.</span></div></div>
-      <div class="ledger-row" role="listitem"><span class="ic">🍽</span><div><b>Restaurants</b><span>Table orders, kitchen tickets (KOT), bill estimate, then the final bill when guests pay.</span></div></div>
-      <div class="ledger-row" role="listitem"><span class="ic">☕</span><div><b>Cafés &amp; bakeries</b><span>Quick counter orders with a token number on every bill, dine-in or takeaway.</span></div></div>
-      <div class="ledger-row" role="listitem"><span class="ic">💊</span><div><b>Pharmacies</b><span>Batch and expiry on every strip, doctor's name, and alerts for stock expiring soon.</span></div></div>
-      <div class="ledger-row" role="listitem"><span class="ic">📦</span><div><b>Wholesale &amp; distribution</b><span>Prices before GST, buyer's last rates, pack units, trade discount, transport details and A3 invoices.</span></div></div>
-      <div class="ledger-row" role="listitem"><span class="ic">✂</span><div><b>Salons &amp; spas</b><span>Record who did each service and see sales for every stylist.</span></div></div>
-      <div class="ledger-row" role="listitem"><span class="ic">🎢</span><div><b>Amusement &amp; water parks</b><span>Weekday and weekend ticket prices, lockers, refundable deposits and QR check-in at the gate.</span></div></div>
+      <div class="ledger-row" role="listitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/></svg></span><div><b>Retail &amp; kirana</b><span>Barcode billing, loose items by weight, labour charges and customer credit.</span></div></div>
+      <div class="ledger-row" role="listitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3v8a2 2 0 0 0 4 0V3"/><path d="M6 13v8"/><path d="M18 21V3c-2 1-3.5 3.5-3.5 7s1.5 4 3.5 4"/></svg></span><div><b>Restaurants</b><span>Table orders, kitchen tickets (KOT), bill estimate, then the bill when guests pay.</span></div></div>
+      <div class="ledger-row" role="listitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v5a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2v3M12 2v3"/></svg></span><div><b>Cafés &amp; bakeries</b><span>Quick counter orders with a token number on every bill.</span></div></div>
+      <div class="ledger-row" role="listitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="8" rx="4" transform="rotate(-45 12 12)"/><path d="M9.2 9.2l5.6 5.6"/></svg></span><div><b>Pharmacies</b><span>Batch and expiry on every strip, doctor's name and expiry alerts.</span></div></div>
+      <div class="ledger-row" role="listitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></span><div><b>Wholesale &amp; distribution</b><span>Buyer's last rates, pack units, trade discount, transport details and A3 invoices.</span></div></div>
+      <div class="ledger-row" role="listitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></span><div><b>Salons &amp; spas</b><span>Who did each service, and sales for every stylist.</span></div></div>
+      <div class="ledger-row" role="listitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9a3 3 0 0 0 0 6v3h18v-3a3 3 0 0 0 0-6V6H3z"/><path d="M14 6v12"/></svg></span><div><b>Amusement &amp; water parks</b><span>Weekday and weekend ticket prices, lockers, deposits and QR gate entry.</span></div></div>
     </div>
   </div>
 </section>
 
-<section class="sec tour" id="features">
+<section class="sec dark">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>See it in the app</h2>
-      <p class="lead">Real screens from KhataVisors. Pick a feature to see it.</p>
+    <div class="sec-head center">
+      <h2>Why shop owners choose KhataVisors</h2>
+      <p class="hi">आसान, सुरक्षित और आपके बिज़नेस के लिए</p>
     </div>
-    <div class="tour-grid">
-      <div class="tabs" role="tablist" aria-label="Features">
-        <button class="tab" role="tab" id="t-bill" aria-controls="screen" aria-selected="true" data-img="assets/app/wholesale.jpg" data-alt="New bill screen with a buyer selected and items added">
-          <b>Bill in seconds</b><span>Search or scan a barcode, use the customer's last rates, take cash, UPI, card, split or credit.</span></button>
-        <button class="tab" role="tab" id="t-share" aria-controls="screen" aria-selected="false" data-img="assets/app/invoice.jpg" data-alt="Saved invoice with PDF, A4 tax invoice, print and WhatsApp buttons">
-          <b>Print, PDF or WhatsApp</b><span>Bills print the moment you save. Send the PDF or an A4 GST tax invoice straight to the customer's WhatsApp.</span></button>
-        <button class="tab" role="tab" id="t-einv" aria-controls="screen" aria-selected="false" data-img="assets/app/invoice.jpg" data-alt="GST e-documents panel with Make e-invoice and Make e-way bill buttons">
-          <b>e-Invoice &amp; e-way bill</b><span>Make the IRN e-invoice and e-way bill from the bill in one click, or have the e-invoice made automatically for every B2B bill.</span></button>
-        <button class="tab" role="tab" id="t-scan" aria-controls="screen" aria-selected="false" data-img="assets/app/stock.jpg" data-alt="Add a purchase screen with Scan the bill option">
-          <b>Snap a purchase bill</b><span>Take a photo of a supplier's bill. Supplier, items, rates and GST are filled in for you to check, and stock goes up when you confirm.</span></button>
-        <button class="tab" role="tab" id="t-gst" aria-controls="screen" aria-selected="false" data-img="assets/app/gst.jpg" data-alt="GST filing screen with GSTR-1 files">
-          <b>GST returns, ready to file</b><span>GSTR-1 files in the GST Offline Tool format, your GSTR-3B figures, and GSTR-2B import for purchases.</span></button>
-        <button class="tab" role="tab" id="t-dash" aria-controls="screen" aria-selected="false" data-img="assets/app/dashboard.jpg" data-alt="Dashboard with sales, average bill and stock alerts">
-          <b>Today's sales at a glance</b><span>Sales, average bill, payment modes, top items and stock to reorder, for any date range.</span></button>
-        <button class="tab" role="tab" id="t-close" aria-controls="screen" aria-selected="false" data-img="assets/app/dayclose.jpg" data-alt="Day close screen showing sales and cash per cashier">
-          <b>Day close in minutes</b><span>See what each cashier billed and the cash that should be in the drawer, then print the handover.</span></button>
-        <button class="tab" role="tab" id="t-users" aria-controls="screen" aria-selected="false" data-img="assets/app/security.jpg" data-alt="Users screen with admin, staff and viewer roles">
-          <b>A login for every person</b><span>Admin, staff and viewer roles, so every bill shows who made it. Two-step verification for every login.</span></button>
+    <div class="bgrid">
+      <div class="bcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9"/><path d="M12 8v13"/><path d="M12 8c-1.5-3-5-3.5-5-1.5S10 8 12 8zM12 8c1.5-3 5-3.5 5-1.5S14 8 12 8z"/></svg></div><h3>Free to start</h3><p>The Starter plan is free for one user and up to 100 bills a month. Upgrade only when you grow.</p></div>
+      <div class="bcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></div><h3>Made for your industry</h3><p>Seven ready setups, each with its own screens and invoice, so you only see what your trade uses.</p></div>
+      <div class="bcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Your data stays yours</h3><p>Each business sees only its own bills and customers. Staff get their own logins and roles.</p></div>
+      <div class="bcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11"/><path d="M9 8h6"/></svg></div><h3>No accounting knowledge needed</h3><p>Bill like you always do. GST, returns and accounting entries are worked out for you.</p></div>
+      <div class="bcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="1.5"/><path d="M6 18h6"/><rect x="17" y="8" width="5" height="12" rx="1"/></svg></div><h3>Works on any device</h3><p>Bill on a Windows PC, an Android phone or a tablet, with your own printer.</p></div>
+      <div class="bcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l4-4 5 3 5-3 4 4"/><path d="M7 7l-2 9 4 3 3-2 3 2 4-3-2-9"/><path d="M10 13l2 2 2-2"/></svg></div><h3>Help when you need it</h3><p>Free demo, setup help and staff training. Reach us on WhatsApp, phone or email.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="devices">
+  <div class="wrap split">
+    <div>
+      <p class="kicker">Any device, any printer</p>
+      <h2>Carry your counter wherever you go</h2>
+      <p class="lead">Install KhataVisors on your PC, phone or tablet. Bills print the moment you save them, with no print window: Bluetooth thermal printers on Android, and any printer on Windows.</p>
+      <div class="dl">
+        <a href="https://billing.khatavisors.com/setup/KhataVisors.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10h14v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M5 10a7 7 0 0 1 14 0"/><path d="M9 7h.01M15 7h.01"/><path d="M7 3l1.5 2.5M17 3l-1.5 2.5"/></svg> Android app</a>
+        <a href="https://billing.khatavisors.com/login/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg> Windows PC</a>
+        <a href="https://billing.khatavisors.com/login/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"/></svg> Any browser</a>
       </div>
-      <figure class="screen" style="margin:0" role="tabpanel" id="screen" aria-labelledby="t-bill">
-        <div class="browser">
-          <div class="browser-bar"><i></i><i></i><i></i><span>billing.khatavisors.com</span></div>
-          <img id="screen-img" src="assets/app/wholesale.jpg" alt="New bill screen with a buyer selected and items added" width="1366" height="589" loading="lazy">
+    </div>
+    <div class="devices" aria-hidden="true">
+      <div class="browser" style="margin-right:90px">
+        <div class="browser-bar"><i></i><i></i><i></i><span>billing.khatavisors.com</span></div>
+        <img src="assets/app/wholesale.jpg" alt="" width="1366" height="589" loading="lazy">
+      </div>
+      <div class="phone">
+        <div class="receipt">
+          <div class="c"><b>CAFE 21</b><br>Token 37</div>
+          <hr>
+          <div class="row"><span>Cold coffee</span><span>140.00</span></div>
+          <div class="row"><span>Veg sandwich</span><span>120.00</span></div>
+          <div class="row"><span>Brownie</span><span>90.00</span></div>
+          <hr>
+          <div class="row tot"><span>TOTAL</span><span>₹350.00</span></div>
+          <div class="row"><span>Paid by UPI</span><span>350.00</span></div>
+          <hr>
+          <div class="c wa">✓ Printed on Bluetooth</div>
         </div>
-        <p class="tab-note" id="tab-note">Search or scan a barcode, use the customer's last rates, take cash, UPI, card, split or credit.</p>
-        <figcaption>Sample business shown. Names and numbers are examples.</figcaption>
-      </figure>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="more">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2>Everything a counter needs</h2>
-      <p class="lead">Turn on what you use. Leave the rest off.</p>
-    </div>
-    <ul class="all">
-      <li><b>Khata / credit</b><span>Sell on credit, set limits and credit days, collect later.</span></li>
-      <li><b>Customers</b><span>Visits, spend and dues for every customer.</span></li>
-      <li><b>Products &amp; stock</b><span>Live stock, low-stock alerts and stock counts.</span></li>
-      <li><b>Suppliers</b><span>Supplier dues, payments and purchase returns.</span></li>
-      <li><b>Estimates</b><span>Send a quote, then turn it into an invoice.</span></li>
-      <li><b>B2B GST invoices</b><span>Bills for companies with GSTIN check.</span></li>
-      <li><b>Returns &amp; credit notes</b><span>Take goods back the right way.</span></li>
-      <li><b>Delivery challans</b><span>Send goods now, invoice later.</span></li>
-      <li><b>Expenses &amp; petty cash</b><span>Note what went out of the drawer.</span></li>
-      <li><b>Offers &amp; vouchers</b><span>Discounts by % or ₹, offers and vouchers.</span></li>
-      <li><b>Excel import</b><span>Bring all items and customers in at once.</span></li>
-      <li><b>Accounting entries</b><span>Export entries for your accountant.</span></li>
-      <li><b>Sales register</b><span>Find, reprint or cancel any bill. Excel export.</span></li>
-      <li><b>Silent printing</b><span>Windows PC helper and Android app. No print window.</span></li>
-      <li><b>Works on any device</b><span>Install on PC, Android phone or tablet.</span></li>
-      <li><b>User manual &amp; support</b><span>Step-by-step help and support tickets in the app.</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="sec pricing" id="pricing">
+<section class="sec soft" id="plans">
   <div class="wrap">
     <div class="sec-head center">
       <h2>Start free. Upgrade when you grow.</h2>
-      <p class="lead">No setup fee. Every plan includes the app on your PC, phone and tablet.</p>
+      <p class="lead">No setup fee. Prices exclude GST.</p>
     </div>
+    <div class="offer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9"/><path d="M12 8v13"/><path d="M12 8c-1.5-3-5-3.5-5-1.5S10 8 12 8zM12 8c1.5-3 5-3.5 5-1.5S14 8 12 8z"/></svg> Festive offer: 20% off the Enterprise plan <span>valid till 30 November 2026</span></div>
     <div class="plans">
       <article class="plan free">
-        <h3>Starter</h3>
-        <p class="who">For a single counter getting started</p>
-        <div class="price"><span class="amt">Free</span></div>
-        <p class="price-note">Free forever for one user</p>
-        <ul>
-          <li>1 user</li>
-          <li>Up to 100 bills a month</li>
-          <li>Bluetooth receipt printing</li>
-          <li>Core billing, customers, khata and sales reports</li>
-          <li class="no">Bills on WhatsApp</li>
-          <li class="no">Photo-scanned purchases</li>
-          <li class="no">e-Invoice &amp; e-way bill</li>
-        </ul>
+        <h3>Starter</h3><p class="who">For a single counter getting started</p>
+        <div class="price"><span class="amt">Free</span></div><p class="price-note">Free forever for one user</p>
+        <ul><li>1 user</li><li>Up to 100 bills a month</li><li>Bluetooth receipt printing</li><li>Core billing, customers, khata and reports</li></ul>
         <a class="btn btn-ink" href="https://billing.khatavisors.com/get-khatavisors/">Start free</a>
       </article>
-
       <article class="plan pro">
-        <span class="flag">Most popular</span>
-        <h3>Enterprise</h3>
-        <p class="who">For a busy business that bills every day</p>
-        <div class="bill" role="group" aria-label="Billing period">
-          <button type="button" aria-pressed="true" data-period="month">Monthly</button>
-          <button type="button" aria-pressed="false" data-period="year">Yearly</button>
-        </div>
-        <div class="price"><span class="amt" id="pro-amt">₹599</span><span class="per" id="pro-per">/month + GST</span></div>
-        <p class="price-note" id="pro-note">Or ₹6,499 a year, <span class="save">save ₹689</span></p>
-        <ul>
-          <li>Everything in Starter, plus:</li>
-          <li><em>2 users</em></li>
-          <li>Bills on WhatsApp</li>
-          <li>Photo-scanned purchases, up to 100 bills a month</li>
-          <li>e-Invoice &amp; e-way bill at ₹0.50 per invoice</li>
-        </ul>
+        <span class="flag">Festive: 20% off</span>
+        <h3>Enterprise</h3><p class="who">For a busy business that bills every day</p>
+        <div class="price"><span class="amt">₹599</span><span class="per">/month + GST</span></div><p class="price-note">Or ₹6,499 a year, <span class="save">save ₹689</span></p>
+        <ul><li>Everything in Starter, plus</li><li>2 users</li><li>Bills on WhatsApp</li><li>Photo-scanned purchases</li><li>e-Invoice &amp; e-way bill at ₹0.50 per invoice</li></ul>
         <a class="btn btn-red" href="https://billing.khatavisors.com/get-khatavisors/">Get Enterprise</a>
       </article>
-
       <article class="plan custom">
-        <h3>Custom</h3>
-        <p class="who">For businesses that need their own setup</p>
-        <div class="price"><span class="amt">Let's talk</span></div>
-        <p class="price-note">Priced for your setup</p>
-        <ul>
-          <li>Set up for your industry: parks, restaurants, retail outlets, pharmacies and more</li>
-          <li>Your own branding and logo</li>
-          <li>Customisation on request (chargeable)</li>
-        </ul>
-        <a class="btn btn-wa" href="https://wa.me/918796760096?text=Hi%2C%20I%27d%20like%20to%20know%20about%20the%20KhataVisors%20Custom%20plan" target="_blank" rel="noopener">Talk to us on WhatsApp</a>
+        <h3>Custom</h3><p class="who">For businesses that need their own setup</p>
+        <div class="price"><span class="amt">Let's talk</span></div><p class="price-note">Priced for your setup</p>
+        <ul><li>Industry setup for parks, restaurants, retail outlets and pharmacies</li><li>Your own branding and logo</li><li>Customisation on request (chargeable)</li></ul>
+        <a class="btn btn-wa" href="https://wa.me/919953879916?text=Hi%2C%20I%27d%20like%20to%20know%20about%20the%20KhataVisors%20Custom%20plan" target="_blank" rel="noopener">Talk to us</a>
       </article>
     </div>
-    <p class="price-foot">e-Invoice and e-way bill charges are per invoice, on top of the plan.</p>
+    <div class="sec-foot"><a class="link" href="pricing.html">Compare plans in detail</a></div>
   </div>
 </section>
 
-<section class="sec" id="faq">
-  <div class="wrap">
-    <div class="sec-head center"><h2>Questions shop owners ask</h2></div>
-    <div class="faq">
-      <details open>
-        <summary>Is the Starter plan really free?</summary>
-        <p>Yes. One user can make up to 100 bills a month at no cost. Move to Enterprise when you need a second user, bills on WhatsApp, photo-scanned purchases or e-invoices.</p>
-      </details>
-      <details>
-        <summary>Which printer do I need?</summary>
-        <p>Any Bluetooth thermal printer works with the KhataVisors Android app. On a Windows PC, the free print helper prints bills straight to your printer with no print window. A4 GST invoices print on any normal printer.</p>
-      </details>
-      <details>
-        <summary>How are e-invoice and e-way bill charged?</summary>
-        <p>On Enterprise they cost ₹0.50 per invoice, on top of the plan. You only pay for the ones you make.</p>
-      </details>
-      <details>
-        <summary>Can I bring my items and customers from Excel?</summary>
-        <p>Yes. Use "Import from Excel" on the Products and Customers pages to add them all at once, and enter old khata and supplier dues as opening balances.</p>
-      </details>
-      <details>
-        <summary>Who can see my business data?</summary>
-        <p>Only your business. Each business sees only its own bills and customers. Give every staff member their own login with the right role, and turn on two-step verification for extra safety.</p>
-      </details>
-      <details>
-        <summary>My business is different. Will it fit?</summary>
-        <p>KhataVisors has separate setups for retail, restaurants, cafés, pharmacies, wholesale, salons and amusement parks. If you need something more, the Custom plan adds your branding and paid customisation. Message us and we'll show you.</p>
-      </details>
-      <details>
-        <summary>Can I change plans later?</summary>
-        <p>Yes. Start on Starter and upgrade whenever you need more. Talk to us to switch between monthly and yearly.</p>
-      </details>
+<section class="sec">
+  <div class="wrap split flip">
+    <div>
+      <p class="kicker">For CAs, accountants and tax consultants</p>
+      <h2>Recommend KhataVisors. Earn every year.</h2>
+      <p class="lead">Work on all your clients from one login, give your team their own logins, and pay for e-invoices from one credit wallet. Your first 5 clients are free, and you earn 25% commission in the first year and 20% every year after.</p>
+      <div class="hero-ctas"><a class="btn btn-red" href="partner.html">Become a partner</a></div>
+    </div>
+    <div class="comm">
+      <div class="tile red"><div class="num">25%</div><b>First year</b><span>on every client you bring</span></div>
+      <div class="then">then</div>
+      <div class="tile yel"><div class="num">20%</div><b>Lifetime</b><span>every year after</span></div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="contact" style="padding-top:0">
+<section class="sec soft">
+  <div class="wrap">
+    <div class="sec-head center"><h2>We're here to help</h2><p class="lead">Free help for every customer, on every plan.</p></div>
+    <div class="bgrid">
+      <div class="scard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></div><h3>Free setup and training</h3><p>We set up your business, bring in your items and customers, and train your staff.</p></div>
+      <div class="scard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg></div><h3>WhatsApp, phone or email</h3><p>Talk to a person at +91 99538 79916 or support@fundvisors.com.</p></div>
+      <div class="scard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><path d="M12 17h.01"/></svg></div><h3>Help inside the app</h3><p>A step-by-step user manual for your industry, and support tickets you can raise from the app.</p></div>
+    </div>
+    <div class="sec-foot"><a class="link" href="support.html">Visit support</a></div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
   <div class="wrap">
     <div class="band">
       <div>
@@ -510,7 +260,7 @@
       </div>
       <div class="acts">
         <a class="btn btn-white" href="https://billing.khatavisors.com/get-khatavisors/">Book a free demo</a>
-        <a class="btn btn-wa" href="https://wa.me/918796760096?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20KhataVisors" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn btn-wa" href="https://wa.me/919953879916?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20KhataVisors" target="_blank" rel="noopener">Chat on WhatsApp</a>
       </div>
     </div>
   </div>
@@ -521,82 +271,59 @@
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div>
+      <div class="foot-brand">
         <img src="khatavisors-logo.png" alt="KhataVisors" width="900" height="253" loading="lazy">
-        <p>GST billing, POS and inventory for every counter.</p>
+        <p>GST billing, POS and inventory for every counter. Free for one user.</p>
+        <p style="margin-top:14px"><a href="tel:+919953879916" style="display:inline;color:#fff;font-weight:700">+91 99538 79916</a><br><a href="mailto:support@fundvisors.com" style="display:inline">support@fundvisors.com</a></p>
       </div>
       <div>
-        <h4>Product</h4>
-        <a href="#industries">Industries</a>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
+        <h4>Features</h4>
+        <a href="features.html#billing">Fast billing</a>
+        <a href="features.html#einvoice">e-Invoice &amp; e-way bill</a>
+        <a href="features.html#purchases">Photo-scanned purchases</a>
+        <a href="features.html#gst">GST returns</a>
+        <a href="features.html#whatsapp">Bills on WhatsApp</a>
+        <a href="features.html#stock">Stock &amp; khata</a>
+      </div>
+      <div>
+        <h4>Make with KhataVisors</h4>
+        <a href="features.html#documents">GST invoice</a>
+        <a href="features.html#documents">B2B invoice</a>
+        <a href="features.html#documents">Estimate / quotation</a>
+        <a href="features.html#documents">Delivery challan</a>
+        <a href="features.html#documents">Credit note</a>
+        <a href="features.html#documents">e-Way bill</a>
+      </div>
+      <div>
+        <h4>Industries</h4>
+        <a href="features.html#industries">Retail &amp; kirana</a>
+        <a href="features.html#industries">Restaurants &amp; cafés</a>
+        <a href="features.html#industries">Pharmacies</a>
+        <a href="features.html#industries">Wholesale</a>
+        <a href="features.html#industries">Salons &amp; spas</a>
+        <a href="features.html#industries">Amusement parks</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="pricing.html">Pricing</a>
+        <a href="partner.html">CA Partner program</a>
+        <a href="https://billing.khatavisors.com/partner/login/">CA Partner sign in</a>
+        <a href="support.html">Support</a>
+        <a href="https://billing.khatavisors.com/get-khatavisors/">Book a free demo</a>
         <a href="https://billing.khatavisors.com/login/">Sign in</a>
-      </div>
-      <div>
-        <h4>Help</h4>
-        <a href="#faq">FAQ</a>
-        <a href="https://billing.khatavisors.com/get-khatavisors/">Book a demo</a>
         <a href="https://billing.khatavisors.com/privacy/">Privacy</a>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <a href="mailto:hello@khatavisors.com">hello@khatavisors.com</a>
-        <a href="https://wa.me/918796760096" target="_blank" rel="noopener">WhatsApp +91 87967 60096</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <div>KhataVisors is a product of <b>Fundvisors Consultancy Services Private Limited</b>.</div>
+      <div>KhataVisors is a product of <b>Fundvisors Consultancy Services Pvt. Ltd.</b></div>
       <div>© 2026 khatavisors.com</div>
     </div>
   </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/918796760096?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20KhataVisors" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+<a class="wa-float" href="https://wa.me/919953879916?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20KhataVisors" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
   <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5.1 2 7.3L2 30l6.9-1.9c2.1 1.2 4.5 1.8 7.1 1.8 7.7 0 14-6.3 14-14S23.7 2 16 2z" fill="#fff"/><path d="M16 4.4c-6.4 0-11.6 5.2-11.6 11.6 0 2.3.7 4.5 1.9 6.3l-1.2 4.5 4.6-1.2c1.7 1.1 3.7 1.6 5.7 1.6 6.4 0 11.6-5.2 11.6-11.6S22.4 4.4 16 4.4z" fill="#25D366"/><path d="M12.1 9.7c-.3-.6-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.3 2.6 4 6.3 5.5 3.1 1.2 3.8 1 4.5.9.7-.1 2.2-.9 2.5-1.8.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.8-.5-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.3.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.3-.6.1-.2 0-.5-.1-.7-.1-.2-.8-2-1.1-2.7z" fill="#fff"/></svg>
 </a>
-
-<script>
-// Feature tour: switch the screenshot when a feature is picked (click, or arrow keys).
-(function () {
-  var tabs = [].slice.call(document.querySelectorAll('.tab'));
-  var img = document.getElementById('screen-img');
-  var panel = document.getElementById('screen');
-  var note = document.getElementById('tab-note');
-  function select(tab, focus) {
-    tabs.forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); t.tabIndex = t === tab ? 0 : -1; });
-    img.src = tab.dataset.img; img.alt = tab.dataset.alt;
-    panel.setAttribute('aria-labelledby', tab.id);
-    note.textContent = tab.querySelector('span').textContent;
-    if (focus) tab.focus();
-  }
-  tabs.forEach(function (t, i) {
-    t.tabIndex = i === 0 ? 0 : -1;
-    t.addEventListener('click', function () { select(t, false); });
-    t.addEventListener('keydown', function (e) {
-      var k = e.key, n = null;
-      if (k === 'ArrowDown' || k === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
-      if (k === 'ArrowUp' || k === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
-      if (n) { e.preventDefault(); select(n, true); }
-    });
-  });
-})();
-
-// Enterprise plan: monthly / yearly price.
-(function () {
-  var btns = [].slice.call(document.querySelectorAll('.bill button'));
-  var amt = document.getElementById('pro-amt'), per = document.getElementById('pro-per'), note = document.getElementById('pro-note');
-  var P = {
-    month: ['₹599', '/month + GST', 'Or ₹6,499 a year, <span class="save">save ₹689</span>'],
-    year:  ['₹6,499', '/year + GST', 'About ₹542 a month, <span class="save">save ₹689</span>']
-  };
-  btns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      var p = P[b.dataset.period];
-      amt.textContent = p[0]; per.textContent = p[1]; note.innerHTML = p[2];
-    });
-  });
-})();
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>
